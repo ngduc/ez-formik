@@ -12,7 +12,7 @@ Easy-to-use components to use with formik - hence the name ez-formik.
 ```JS
 $ npm install ez-formik
 
-import { EzField } from 'ez-formik';
+import { EzField, EzSubmit } from 'ez-formik';
 
 <Form>
   <EzField>Label | Placeholder (optional) | field</EzField>
