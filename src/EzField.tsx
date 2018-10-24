@@ -24,7 +24,7 @@ const EzFieldComp = (props: any) => {
         placeholder={placeholder}
         onChange={props.formik.handleChange}
         validate={props.validate}
-        className={`ez-field ${hasErrors ? 'error-field' : ''}`}
+        className={`ez-field ${hasErrors ? 'ez-field-error' : ''}`}
       />
       {hasErrors && <span className="ez-error">{errors[fieldName]}</span>}
       {/* <ErrorMessage name={fieldName} /> */}
