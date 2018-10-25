@@ -24,7 +24,7 @@ Not just shorter syntax, it's also offering:
 And more:
 - Layouts (vertical, horizontal)
 - Work with different CSS Frameworks / Form Layouts (tentcss (default), bootstrap, spectre, etc.)
-- Use FastField to avoid too many re-renders.
+- Use FastField to avoid [too many re-renders](https://twitter.com/jaredpalmer/status/962114095481851910?lang=en)
 - More types of fields.
 
 ### 📦 Usage
