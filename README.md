@@ -6,14 +6,22 @@ Easy-to-use components to use with formik - hence the name ez-formik.
 
 ### 🌟 Features
 
+[![Screenshot](screenshot-compare.png)](src/EzFormikExample.tsx)
+
 ```
-Easy    Flexible    Fast    Layouts    Themes
+Easy    Flexible    Consistent    Fast    Layouts    Themes    More Types
 ```
 
-- Formik is easy, ez-formik is ...easier.
-- Simplify Formik but will not stand in your way. You are still free to follow Formik at any point.
+Not just shorter syntax, it's also offering:
+- Formik is easy, ez-formik is ...easier, duh `¯\_(ツ)_/¯`
+- Simplified Formik but will not stand in your way. You are free to follow Formik at any point.
+- Consistent rendering, stylings (for big projects)
+
+And more:
+- Layouts (vertical, horizontal)
+- Work with different CSS Frameworks / Form Layouts (tentcss (default), bootstrap, spectre, etc.)
 - Use FastField to avoid too many re-renders.
-- Work with different CSS Frameworks / Form Layouts (Tentcss (default), Bootstrap, Spectre, etc.)
+- More types of fields.
 
 ### 📦 Usage
 
