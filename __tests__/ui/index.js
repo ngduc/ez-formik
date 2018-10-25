@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import '../../src/styles.css';
+import '../../lib/css/spectre.css';
+import '../../lib/css/styles.css';
 import { EzFormikExample } from '../../lib';
 
 class Demo extends Component {

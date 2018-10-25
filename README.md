@@ -1,5 +1,7 @@
 # ez-formik
 
+[![Build Status](https://travis-ci.org/ngduc/ez-formik.svg?branch=master)](https://travis-ci.org/ngduc/ez-formik)
+
 Easy-to-use components to use with formik - hence the name ez-formik.
 
 *"Let it take care of the work so you don't have to"*

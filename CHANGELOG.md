@@ -1,4 +1,4 @@
-## [0.1.1] - 2018-10-24
+## [0.1.2] - 2018-10-25
 
 ### Added
 - first working version.
@@ -6,3 +6,4 @@
 - layout (vertical, horizontal)
 - themes (tentcss (default), bootstrap, spectre)
 - examples
+- ui tests

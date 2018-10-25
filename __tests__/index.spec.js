@@ -13,32 +13,43 @@ async function prop(element, property) {
 beforeAll(async () => {
   page = await browser.newPage();
   await page.goto('http://localhost:3003/');
-  await page.waitForSelector('.tabulator');
+  await page.waitForSelector('.form-group');
 });
 
 describe('ez-formik', () => {
-  test('should render all tabulator tables', async () => {
-    const tables = await page.$$('.tabulator');
-    expect(tables).toHaveLength(2);
+  test('should render all fields', async () => {
+    const fields = await page.$$('.form-group');
+    expect(fields).toHaveLength(4);
   });
 
-  test('1st table - should render columns & data', async () => {
-    const cols = await page.$$('.tabulator:nth-of-type(1) .tabulator-col');
-    expect(cols).toHaveLength(2);
-    expect(await prop(cols[0], 'innerText')).toContain('ID');
-    expect(await prop(cols[1], 'innerText')).toContain('Name');
-
-    const rows = await page.$$('.tabulator:nth-of-type(1) .tabulator-row');
-    expect(rows).toHaveLength(2);
-    expect(await prop(rows[0], 'innerText')).toContain('John');
-    expect(await prop(rows[1], 'innerText')).toContain('Jane');
+  test('should have fields with 100% width', async () => {
+    const emailStyles = await page.evaluate(() => {
+      const el = document.querySelector('[name="email"]');
+      return JSON.parse(JSON.stringify(getComputedStyle(el)));
+    });
+    const dobStyles = await page.evaluate(() => {
+      const el = document.querySelector('[name="dob"]');
+      return JSON.parse(JSON.stringify(getComputedStyle(el)));
+    });
+    expect(emailStyles.width).toContain('800px'); // 100% of view width
+    expect(dobStyles.width).toContain('800px'); // 100% of view width
   });
 
-  test('2nd table - should render columns & data', async () => {
-    const cols = await page.$$('.tabulator:nth-of-type(2) .tabulator-col');
-    expect(cols).toHaveLength(6);
+  test('should show error on blur', async () => {
+    const email = await page.$('[name="email"]');
+    email.focus();
+    const dob = await page.$('[name="dob"]');
+    dob.focus(); // this trigger email field "blur" => should show: email required error
+    const emailError = await page.$$('.form-input-hint'); // spectre error class
+    expect(emailError).toHaveLength(1);
+  });
 
-    const rows = await page.$$('.tabulator:nth-of-type(2) .tabulator-row');
-    expect(rows).toHaveLength(7);
+  test('should show all errors on submit', async () => {
+    const email = await page.$('[name="email"]');
+    email.focus();
+    const submit = await page.$('[type="submit"]');
+    submit.click();
+    const errors = await page.$$('.form-input-hint'); // spectre error class
+    expect(errors).toHaveLength(2);
   });
 });
