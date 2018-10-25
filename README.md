@@ -6,7 +6,9 @@ Easy-to-use components to use with formik - hence the name ez-formik.
 
 ### 🌟 Features
 
-`Easy    Flexible    Fast    Layouts    Theme`
+```
+Easy    Flexible    Fast    Layouts    Themes
+```
 
 - Formik is easy, ez-formik is ...easier.
 - Simplify Formik but will not stand in your way. You are still free to follow Formik at any point.
@@ -28,6 +30,7 @@ import { EzField, EzSubmit } from 'ez-formik';
   <EzButton>Cancel</EzButton>
 </EzForm>
 ```
+- Full code example: [Link](src/EzFormikExample.tsx)
 
 Result:
 

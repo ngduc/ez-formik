@@ -11,7 +11,6 @@ const schema = Yup.object().shape({
   email: Yup.string().required('Email is required!'),
   dob: Yup.string().required('Birthday is required!')
 });
-const schema2 = JSON.parse(JSON.stringify(schema))
 
 export default class extends React.Component {
   state: any = {};
