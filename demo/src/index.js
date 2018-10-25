@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import './styles.css';
 
-// import '../../src/css/bootstrap4.css';
-import '../../src/css/spectre.css';
-import '../../src/css/styles.css'; // default Theme
+// import '../../lib/css/bootstrap4.css';
+import '../../lib/css/spectre.css';
+import '../../lib/css/styles.css'; // default Theme
 import { EzFormikExample } from '../../lib';
 
 class Demo extends Component {

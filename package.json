@@ -1,6 +1,6 @@
 {
   "name": "ez-formik",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Easy-to-use components to use with formik - hence the name ez-formik.",
   "main": "lib/index.js",
   "module": "es/index.js",

@@ -4,6 +4,8 @@ Easy-to-use components to use with formik - hence the name ez-formik.
 
 *"Let it take care of the work so you don't have to"*
 
+- Live example: [Codesandbox](https://codesandbox.io/s/y7vwzp2091)
+
 ### 🌟 Features
 
 [![Screenshot](screenshot-compare.png)](src/EzFormikExample.tsx)
@@ -39,6 +41,7 @@ import { EzField, EzSubmit } from 'ez-formik';
 </EzForm>
 ```
 - Full code example: [Link](src/EzFormikExample.tsx)
+- Live example: [Codesandbox](https://codesandbox.io/s/y7vwzp2091)
 
 Result:
 
