@@ -1,7 +1,31 @@
 import * as React from 'react';
-import { connect, FastField } from 'formik';
+import { connect, FastField, FormikContext } from 'formik';
 
-const EzFieldComp = (props: any) => {
+const getClasses = (use: string) => {
+  const defaults = {
+    group: '',
+    label: 'ez-label',
+    control: 'ez-field',
+    invalidControl: 'ez-field-error',
+    error: 'ez-error'
+  };
+  if (use === 'bootstrap') {
+    defaults.group = 'form-group';
+    defaults.control = 'form-control';
+    defaults.invalidControl = 'is-invalid';
+    defaults.error = 'invalid-feedback';
+  }
+  if (use === 'spectre') {
+    defaults.group = 'form-group';
+    defaults.label = 'form-label';
+    defaults.control = 'form-input';
+    defaults.invalidControl = 'is-error';
+    defaults.error = 'form-input-hint';
+  }
+  return defaults;
+};
+
+const EzField = (props: any) => {
   if (!props.children) {
     throw 'EzField is being used incorrectly: missing props.children';
     return null;
@@ -12,11 +36,22 @@ const EzFieldComp = (props: any) => {
 
   const errors = props.formik.errors;
   const hasErrors =
-    typeof props.formik.errors[fieldName] !== 'undefined' &&
-    (props.formik.touched[fieldName] || props.formik.submitCount > 0);
+    props.formik.errors.hasOwnProperty(fieldName) &&
+    (props.formik.touched.hasOwnProperty(fieldName) || props.formik.submitCount > 0);
+
+  const classes = getClasses(props.formik.ezUse);
+  const css = props.formik.ezCss || {}
+  const labelCss = css.label || props.labelCss || ''
+  const labelClass = labelCss ? `${classes.label} ${labelCss}` : classes.label
+
+  const controlCss = css.control || props.controlCss || ''
+  const controlClass = controlCss ? `${classes.control} ${controlCss}` : classes.control
+
+  const errorCss = css.error || props.errorCss || ''
+  const errorClass = errorCss ? `${classes.error} ${errorCss}` : classes.error
   return (
-    <div>
-      <label htmlFor={fieldName} className="ez-label">
+    <div className={classes.group}>
+      <label htmlFor={fieldName} className={labelClass}>
         {arr[0]}
       </label>
       <FastField
@@ -24,13 +59,10 @@ const EzFieldComp = (props: any) => {
         placeholder={placeholder}
         onChange={props.formik.handleChange}
         validate={props.validate}
-        className={`ez-field ${hasErrors ? 'ez-field-error' : ''}`}
+        className={`${controlClass} ${hasErrors ? classes.invalidControl : ''}`}
       />
-      {hasErrors && <span className="ez-error">{errors[fieldName]}</span>}
-      {/* <ErrorMessage name={fieldName} /> */}
+      {hasErrors && <span className={errorClass}>{errors[fieldName]}</span>}
     </div>
   );
 };
-const EzField = connect(EzFieldComp);
-
-export default EzField;
+export default connect(EzField);

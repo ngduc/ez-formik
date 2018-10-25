@@ -1,6 +1,6 @@
 {
   "name": "ez-formik",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Easy-to-use components to use with formik - hence the name ez-formik.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "npm run clean && tsc --outDir ./lib --jsx react ./src/index.tsx && npm run postbuild",
-    "postbuild": "echo",
+    "postbuild": "cp -R ./src/css ./lib",
     "clean": "nwb clean-module && nwb clean-demo",
     "prepublishOnly": "npm run build",
     "start": "nwb serve-react-demo --port 3003",
@@ -41,6 +41,7 @@
   },
   "homepage": "https://github.com/ngduc/ez-formik#readme",
   "dependencies": {
+    "classnames": "^2.2.6",
     "dotenv": "^6.1.0",
     "pick-react-known-prop": "^0.1.5"
   },

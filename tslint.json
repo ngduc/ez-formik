@@ -6,7 +6,7 @@
   },
   "jsRules": {
     "curly": true,
-    "no-console": false
+    "no-console": false,
   },
   "rules": {
     "curly": true,

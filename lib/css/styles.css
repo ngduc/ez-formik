@@ -1,6 +1,5 @@
-.ez-label {
-  min-width: 120px;
-  display: inline-block;
+.left25pct {
+  margin-left: 25%;
 }
 
 .ez-field {
@@ -10,6 +9,7 @@
   min-width: 200px;
   font-size: 0.9rem;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .ez-field-error {
@@ -17,13 +17,12 @@
 }
 
 .ez-error {
-  margin-left: 10px;
   color: #d40000;
+  font-size: 0.8rem;
 }
 
 .ez-submit {
   margin-top: 5px;
-  margin-left: 120px;
 }
 
 .ez-btn {
