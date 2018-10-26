@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { connect, FormikContext } from 'formik';
+import { connect } from 'formik';
+import { pickHTMLProps } from 'pick-react-known-prop';
 
 const getClasses = (use: string) => {
   const defaults = {
@@ -41,8 +42,9 @@ const EzButton = (props: any) => {
   if (props.rightGap) {
     style.marginRight = props.rightGap;
   }
+  const htmlProps = pickHTMLProps(props)
   return (
-    <button type={type} className={`${isSubmit ? classes.primary : classes.secondary}`} style={style} {...props}>
+    <button type={type} className={`${isSubmit ? classes.primary : classes.secondary}`} style={style} {...htmlProps}>
       {text}
     </button>
   );

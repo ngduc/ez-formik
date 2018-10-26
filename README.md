@@ -32,15 +32,15 @@ And more:
 ```JS
 $ npm install ez-formik
 
-import { EzField, EzSubmit } from 'ez-formik';
+import { Form, Field, Button } from 'ez-formik';
 
-<EzForm use="bootstrap">
-  <EzField>Email | email</EzField>
-  <EzField>Birthday | Date of birth (mm/dd/yyyy) | dob</EzField>
+<Form use="bootstrap">
+  <Field>Email | email</Field>
+  <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
 
-  <EzButton type="submit" />
-  <EzButton>Cancel</EzButton>
-</EzForm>
+  <Button type="submit"/>
+  <Button>Cancel</Button>
+</Form>
 ```
 - Full code example: [Link](src/EzFormikExample.tsx)
 - Live example: [Codesandbox](https://codesandbox.io/s/y7vwzp2091)

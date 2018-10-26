@@ -3,9 +3,9 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import DisplayFormikState from './DisplayFormikState';
 
-import EzForm from './EzForm';
-import EzField from './EzField';
-import EzButton from './EzButton';
+import Form from './EzForm';
+import Field from './EzField';
+import Button from './EzButton';
 
 const schema = Yup.object().shape({
   email: Yup.string().required('Email is required!'),
@@ -24,15 +24,15 @@ export default class extends React.Component {
   }
 
   renderForm = (props: any) => (
-    <EzForm use="spectre">
-      <EzField>Email | email</EzField>
-      <EzField>Birthday | Date of birth (mm/dd/yyyy) | dob</EzField>
+    <Form use="spectre">
+      <Field>Email | email</Field>
+      <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
 
-      <EzButton type="submit" disabled={props.isSubmitting} />
-      <EzButton gap={10} disabled>Cancel</EzButton>
+      <Button type="submit" disabled={props.isSubmitting} />
+      <Button gap={10} disabled>Cancel</Button>
 
       <DisplayFormikState {...props} />
-    </EzForm>
+    </Form>
   )
 
   renderHorizontalForm = (props: any) => {
@@ -42,15 +42,15 @@ export default class extends React.Component {
       error: 'left25pct'
     }
     return (
-      <EzForm use="spectre" css={css}>
-        <EzField>Email | email</EzField>
-        <EzField>Birthday | Date of birth (mm/dd/yyyy) | dob</EzField>
+      <Form use="spectre" css={css}>
+        <Field>Email | email</Field>
+        <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
 
-        <EzButton leftGap={'25%'} type="submit" disabled={props.isSubmitting} />
-        <EzButton gap={10} disabled>Cancel</EzButton>
+        <Button leftGap={'25%'} type="submit" disabled={props.isSubmitting} />
+        <Button gap={10} disabled>Cancel</Button>
 
         <DisplayFormikState {...props} />
-      </EzForm>
+      </Form>
     )
   }
 
