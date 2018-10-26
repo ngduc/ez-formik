@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ngduc/ez-formik.svg?branch=master)](https://travis-ci.org/ngduc/ez-formik)
 
-Easy-to-use components to use with formik - hence the name ez-formik.
+Easy-to-use components to use with [formik](https://github.com/jaredpalmer/formik) - hence the name ez-formik.
 
 *"Let it take care of the work so you don't have to"*
 
@@ -32,7 +32,7 @@ And more:
 ```JS
 $ npm install ez-formik
 
-import { Form, Field, Button } from 'ez-formik';
+import { Form, Field, Button } from 'ez-formik'; // or: EzForm, EzField, EzButton
 
 <Form use="bootstrap">
   <Field>Email | email</Field>

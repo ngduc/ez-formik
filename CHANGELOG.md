@@ -1,7 +1,7 @@
-## [0.1.2] - 2018-10-25
+## [0.1.3] - 2018-10-25
 
 ### Added
-- first working version.
+- first working version!
 - EzForm, EzField, EzButton
 - layout (vertical, horizontal)
 - themes (tentcss (default), bootstrap, spectre)
