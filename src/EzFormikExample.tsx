@@ -12,6 +12,21 @@ const schema = Yup.object().shape({
   dob: Yup.string().required('Birthday is required!')
 });
 
+const animals = [
+  { value: '', label: 'Select an animal'},
+  { value: 'TIGER', label: 'Tiger'},
+  { value: 'BEAR', label: 'Bear'}
+]
+const genders = [
+  { value: '', label: 'N/A'},
+  { value: 'MALE', label: 'Male'},
+  { value: 'FEMALE', label: 'Female'}
+]
+const roles = [
+  { value: 'ADMIN', label: 'Admin'},
+  { value: 'USER', label: 'User'}
+]
+
 export default class extends React.Component {
   state: any = {};
 
@@ -27,6 +42,16 @@ export default class extends React.Component {
     <Form use="spectre">
       <Field>Email | email</Field>
       <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
+
+      <label>Gender:</label>
+      {genders.map(gender => <Field radio value={gender.value}>{gender.label} | gender</Field>)}
+
+      <Field component="select" label="Favorite Animal" name="animal">
+        {animals.map(opt => <option value={opt.value}>{opt.label}</option>)}
+      </Field>
+      
+      <label>Roles:</label>
+      {roles.map(role => <Field checkbox value={role.value}>{role.label} | roles</Field>)}
 
       <Button type="submit" disabled={props.isSubmitting} />
       <Button gap={10} disabled>Cancel</Button>
@@ -58,7 +83,7 @@ export default class extends React.Component {
     return (
       <div>
         <Formik
-          initialValues={{}}
+          initialValues={{ email: 'example@email.com', roles: ['USER'], gender: '' }}
           validationSchema={schema}
           onSubmit={this.onSubmit}
           render={this.renderForm}

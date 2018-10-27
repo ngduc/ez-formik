@@ -1,4 +1,9 @@
-## [0.1.3] - 2018-10-25
+## [0.2.0] - 2018-10-26
+
+### Added
+- Checkbox, Radio types.
+
+## [0.1.3] - 2018-10-20
 
 ### Added
 - first working version!

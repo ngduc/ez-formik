@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { connect, FastField, FormikContext } from 'formik';
+import { connect, Field, FastField } from 'formik';
+import { getChildrenParts } from './Utils'
 
 const getClasses = (use: string) => {
   const defaults = {
@@ -25,14 +26,65 @@ const getClasses = (use: string) => {
   return defaults;
 };
 
+function Checkbox(props: any) {
+  return (
+    <Field name={props.name}>
+      {({ field, form }) => (
+        <label>
+          <input
+            type="checkbox"
+            {...props}
+            checked={field.value.includes(props.value)}
+            onChange={() => {
+              if (field.value.includes(props.value)) {
+                const nextValue = field.value.filter(
+                  (value: any) => value !== props.value
+                );
+                form.setFieldValue(props.name, nextValue);
+              } else {
+                const nextValue = field.value.concat(props.value);
+                form.setFieldValue(props.name, nextValue);
+              }
+            }}
+          />
+          &nbsp;
+          {props.label}
+        </label>
+      )}
+    </Field>
+  );
+}
+
+function Radio(props: any) {
+  return (
+    <Field name={props.name}>
+      {({ field, form }) => {
+        return (
+          <label>
+            <input
+              type="radio"
+              {...props}
+              checked={field.value === props.value}
+              onChange={() => {
+                console.log(222, field, props);
+                form.setFieldValue(props.name, props.value);
+              }}
+            />
+            &nbsp;
+            {props.label}
+          </label>
+        )
+      }}
+    </Field>
+  );
+}
+
 const EzField = (props: any) => {
   if (!props.children) {
     throw 'EzField is being used incorrectly: missing props.children';
     return null;
   }
-  const arr = props.children.split('|').map((item: string) => item.trim());
-  const fieldName = arr[arr.length - 1];
-  const placeholder = arr.length === 3 ? arr[1] : '';
+  const { label, placeholder, fieldName } = getChildrenParts(props)
 
   const errors = props.formik.errors;
   const hasErrors =
@@ -49,18 +101,29 @@ const EzField = (props: any) => {
 
   const errorCss = css.error || props.errorCss || ''
   const errorClass = errorCss ? `${classes.error} ${errorCss}` : classes.error
+
+  // <Checkbox label={label} name={fieldName} value={props.value} />
   return (
     <div className={classes.group}>
-      <label htmlFor={fieldName} className={labelClass}>
-        {arr[0]}
-      </label>
-      <FastField
-        name={fieldName}
-        placeholder={placeholder}
-        onChange={props.formik.handleChange}
-        validate={props.validate}
-        className={`${controlClass} ${hasErrors ? classes.invalidControl : ''}`}
-      />
+      {props.checkbox ? (
+        <Checkbox label={label} name={fieldName} value={props.value} />
+      ) : props.radio ? (
+        <Radio label={label} name={fieldName} value={props.value} />
+      ) : (
+        <React.Fragment>
+          <label htmlFor={fieldName} className={labelClass}>
+            {label}
+          </label>
+          <FastField
+            name={fieldName}
+            placeholder={placeholder}
+            onChange={props.formik.handleChange}
+            validate={props.validate}
+            className={`${controlClass} ${hasErrors ? classes.invalidControl : ''}`}
+            {...(typeof props.children !== 'string' ? props : {})}
+          />
+        </React.Fragment>
+      )}
       {hasErrors && <span className={errorClass}>{errors[fieldName]}</span>}
     </div>
   );
